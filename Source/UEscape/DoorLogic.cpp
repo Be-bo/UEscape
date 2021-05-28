@@ -19,7 +19,9 @@ void UDoorLogic::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("bruh, you hailed"));
+	//UE_LOG(LogTemp, Warning, TEXT("bruh, you hailed"));
+	
+	OpenDoor();
 	
 }
 
@@ -30,5 +32,13 @@ void UDoorLogic::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+}
+
+void UDoorLogic::OpenDoor() {
+	GetOwner()->SetActorRotation(FQuat(FVector(0, 0, 1), FMath::DegreesToRadians(-110)));
+}
+
+void UDoorLogic::CloseDoor() {
+	GetOwner()->SetActorRotation(FQuat(FVector(0, 0, 1), FMath::DegreesToRadians(0)));
 }
 
